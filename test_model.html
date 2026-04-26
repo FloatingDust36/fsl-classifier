@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Model Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+</head>
+<body>
+  <h2>Check the browser console (F12)</h2>
+  <script>
+    async function testModel() {
+      const model = await tf.loadLayersModel('./tfjs_model/model.json');
+      console.log('Model loaded successfully');
+      console.log('Input shape:', model.inputs[0].shape);
+      console.log('Output shape:', model.outputs[0].shape);
+
+      // Run a test prediction with a zero vector
+      const testInput = tf.zeros([1, 63]);
+      const prediction = model.predict(testInput);
+      const values = await prediction.data();
+      console.log('Prediction output (24 values):', Array.from(values).map(v => v.toFixed(4)));
+      console.log('Sum of outputs (should be ~1.0):', values.reduce((a, b) => a + b, 0).toFixed(6));
+    }
+
+    testModel().catch(console.error);
+  </script>
+</body>
+</html>
