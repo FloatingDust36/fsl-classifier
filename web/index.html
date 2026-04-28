@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FSL Classifier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Landing screen — shown before camera starts -->
+  <div id="landing-screen">
+    <h1>FSL Classifier</h1>
+    <p>Real-time Filipino Sign Language letter recognition</p>
+    <button id="start-btn">Start Camera</button>
+  </div>
+
+  <!-- App screen — hidden until camera starts -->
+  <div id="app-screen" class="hidden">
+
+    <!-- Camera + skeleton overlay -->
+    <div id="canvas-container">
+      <video id="webcam" autoplay playsinline></video>
+      <canvas id="overlay"></canvas>
+    </div>
+
+    <!-- Prediction display -->
+    <div id="prediction-box">
+      <span id="predicted-letter">—</span>
+      <span id="confidence-display"></span>
+    </div>
+
+    <!-- Word builder display -->
+    <div id="word-box">
+      <span id="current-word"></span>
+    </div>
+
+    <!-- Controls -->
+    <div id="controls">
+      <button id="speak-btn">Speak</button>
+      <button id="clear-btn">Clear</button>
+    </div>
+
+  </div>
+
+  <!-- Scripts — order matters -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+  <script src="classifier.js"></script>
+  <script src="wordBuilder.js"></script>
+  <script src="hands.js"></script>
+
+</body>
+
+</html>
