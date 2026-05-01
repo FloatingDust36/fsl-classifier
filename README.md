@@ -65,6 +65,7 @@ NG is handled via word builder logic — it is not a model class.
 ---
 
 ## Project structure
+```
 fsl-classifier/
 ├── data/
 │   └── dataset.csv              # 9,600 rows, 64 columns
@@ -86,6 +87,7 @@ fsl-classifier/
 ├── hand_landmarker.task         # MediaPipe model file
 ├── label_map.json
 └── requirements.txt
+```
 
 ---
 
