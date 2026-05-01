@@ -12,42 +12,136 @@
 
 <body>
 
-  <!-- Landing screen — shown before camera starts -->
+  <!-- Landing screen -->
   <div id="landing-screen">
-    <h1>FSL Classifier</h1>
-    <p>Real-time Filipino Sign Language letter recognition</p>
-    <button id="start-btn">Start Camera</button>
+    <div id="landing-content">
+
+      <div id="landing-header">
+        <h1>FSL Classifier</h1>
+        <p id="landing-tagline">Real-time Filipino Sign Language fingerspelling recognition — right in your browser</p>
+      </div>
+
+      <div id="how-it-works">
+        <h2>How it works</h2>
+        <div id="steps">
+          <div class="step">
+            <span class="step-icon">✋</span>
+            <span class="step-text">Show your hand to the camera and sign any FSL letter</span>
+          </div>
+          <div class="step">
+            <span class="step-icon">⏱️</span>
+            <span class="step-text">Hold the sign steady for 1.5 seconds to add it to your word</span>
+          </div>
+          <div class="step">
+            <span class="step-icon">🔊</span>
+            <span class="step-text">Press <strong>Speak</strong> to hear your word read aloud</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="supported-letters">
+        <h2>Supported letters</h2>
+        <p id="letters-note">24 static FSL letters — J, Z, and Ñ require motion and are not supported</p>
+        <div id="letters-grid">
+          <span class="letter-badge">A</span>
+          <span class="letter-badge">B</span>
+          <span class="letter-badge">C</span>
+          <span class="letter-badge">D</span>
+          <span class="letter-badge">E</span>
+          <span class="letter-badge">F</span>
+          <span class="letter-badge">G</span>
+          <span class="letter-badge">H</span>
+          <span class="letter-badge">I</span>
+          <span class="letter-badge">K</span>
+          <span class="letter-badge">L</span>
+          <span class="letter-badge">M</span>
+          <span class="letter-badge">N</span>
+          <span class="letter-badge">O</span>
+          <span class="letter-badge">P</span>
+          <span class="letter-badge">Q</span>
+          <span class="letter-badge">R</span>
+          <span class="letter-badge">S</span>
+          <span class="letter-badge">T</span>
+          <span class="letter-badge">U</span>
+          <span class="letter-badge">V</span>
+          <span class="letter-badge">W</span>
+          <span class="letter-badge">X</span>
+          <span class="letter-badge">Y</span>
+          <span class="letter-badge unsupported">J</span>
+          <span class="letter-badge unsupported">Z</span>
+          <span class="letter-badge unsupported">Ñ</span>
+        </div>
+      </div>
+
+      <button id="start-btn">Start Camera</button>
+
+      <p id="attribution">FSL reference images from <a href="https://www.fingeralphabet.org/FSL" target="_blank">Project
+          Fingeralphabet</a> — CC BY-NC-ND 4.0</p>
+
+    </div>
   </div>
 
-  <!-- App screen — hidden until camera starts -->
+  <!-- App screen -->
   <div id="app-screen" class="hidden">
 
-    <!-- Camera + skeleton overlay -->
-    <div id="canvas-container">
-      <video id="webcam" autoplay playsinline></video>
-      <canvas id="overlay"></canvas>
+    <!-- Left column: camera + prediction + word + controls -->
+    <div id="app-left">
+
+      <div id="canvas-container">
+        <video id="webcam" autoplay playsinline></video>
+        <canvas id="overlay"></canvas>
+      </div>
+
+      <div id="prediction-box">
+        <span id="predicted-letter">—</span>
+        <span id="confidence-display"></span>
+      </div>
+
+      <div id="word-box">
+        <span id="current-word"></span>
+      </div>
+
+      <div id="controls">
+        <button id="speak-btn">Speak</button>
+        <button id="clear-btn">Clear</button>
+      </div>
+
     </div>
 
-    <!-- Prediction display -->
-    <div id="prediction-box">
-      <span id="predicted-letter">—</span>
-      <span id="confidence-display"></span>
-    </div>
-
-    <!-- Word builder display -->
-    <div id="word-box">
-      <span id="current-word"></span>
-    </div>
-
-    <!-- Controls -->
-    <div id="controls">
-      <button id="speak-btn">Speak</button>
-      <button id="clear-btn">Clear</button>
+    <!-- Right column: FSL reference sidebar -->
+    <div id="app-right">
+      <h2 id="sidebar-title">FSL Reference</h2>
+      <div id="fsl-grid">
+        <div class="fsl-item" id="ref-A"><img src="fsl_images/A.png" alt="A" /><span>A</span></div>
+        <div class="fsl-item" id="ref-B"><img src="fsl_images/B.png" alt="B" /><span>B</span></div>
+        <div class="fsl-item" id="ref-C"><img src="fsl_images/C.png" alt="C" /><span>C</span></div>
+        <div class="fsl-item" id="ref-D"><img src="fsl_images/D.png" alt="D" /><span>D</span></div>
+        <div class="fsl-item" id="ref-E"><img src="fsl_images/E.png" alt="E" /><span>E</span></div>
+        <div class="fsl-item" id="ref-F"><img src="fsl_images/F.png" alt="F" /><span>F</span></div>
+        <div class="fsl-item" id="ref-G"><img src="fsl_images/G.png" alt="G" /><span>G</span></div>
+        <div class="fsl-item" id="ref-H"><img src="fsl_images/H.png" alt="H" /><span>H</span></div>
+        <div class="fsl-item" id="ref-I"><img src="fsl_images/I.png" alt="I" /><span>I</span></div>
+        <div class="fsl-item" id="ref-K"><img src="fsl_images/K.png" alt="K" /><span>K</span></div>
+        <div class="fsl-item" id="ref-L"><img src="fsl_images/L.png" alt="L" /><span>L</span></div>
+        <div class="fsl-item" id="ref-M"><img src="fsl_images/M.png" alt="M" /><span>M</span></div>
+        <div class="fsl-item" id="ref-N"><img src="fsl_images/N.png" alt="N" /><span>N</span></div>
+        <div class="fsl-item" id="ref-O"><img src="fsl_images/O.png" alt="O" /><span>O</span></div>
+        <div class="fsl-item" id="ref-P"><img src="fsl_images/P.png" alt="P" /><span>P</span></div>
+        <div class="fsl-item" id="ref-Q"><img src="fsl_images/Q.png" alt="Q" /><span>Q</span></div>
+        <div class="fsl-item" id="ref-R"><img src="fsl_images/R.png" alt="R" /><span>R</span></div>
+        <div class="fsl-item" id="ref-S"><img src="fsl_images/S.png" alt="S" /><span>S</span></div>
+        <div class="fsl-item" id="ref-T"><img src="fsl_images/T.png" alt="T" /><span>T</span></div>
+        <div class="fsl-item" id="ref-U"><img src="fsl_images/U.png" alt="U" /><span>U</span></div>
+        <div class="fsl-item" id="ref-V"><img src="fsl_images/V.png" alt="V" /><span>V</span></div>
+        <div class="fsl-item" id="ref-W"><img src="fsl_images/W.png" alt="W" /><span>W</span></div>
+        <div class="fsl-item" id="ref-X"><img src="fsl_images/X.png" alt="X" /><span>X</span></div>
+        <div class="fsl-item" id="ref-Y"><img src="fsl_images/Y.png" alt="Y" /><span>Y</span></div>
+      </div>
     </div>
 
   </div>
 
-  <!-- Scripts — order matters -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>

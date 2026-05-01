@@ -54,6 +54,9 @@ function updatePredictionDisplay(result) {
   const letterEl = document.getElementById('predicted-letter');
   const confEl = document.getElementById('confidence-display');
 
+  // Always remove previous highlight
+  document.querySelectorAll('.fsl-item').forEach(el => el.classList.remove('active'));
+
   if (!result) {
     letterEl.textContent = '—';
     confEl.textContent = '';
@@ -62,6 +65,10 @@ function updatePredictionDisplay(result) {
 
   letterEl.textContent = result.letter;
   confEl.textContent = (result.confidence * 100).toFixed(1) + '%';
+
+  // Highlight the predicted letter in the sidebar
+  const refEl = document.getElementById(`ref-${result.letter}`);
+  if (refEl) refEl.classList.add('active');
 }
 
 function updateWordDisplay() {

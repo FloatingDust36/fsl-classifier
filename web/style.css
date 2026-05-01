@@ -58,15 +58,25 @@ button:hover {
   background-color: #1d4ed8;
 }
 
-/* ── App Screen ── */
+/* ── App Screen — horizontal layout ── */
 #app-screen {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 24px;
+  width: 100%;
+  max-width: 1100px;
+  overflow-x: auto;
+}
+
+/* ── Left Column ── */
+#app-left {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding: 24px;
-  width: 100%;
-  max-width: 720px;
+  flex-shrink: 0;
 }
 
 /* ── Canvas Container ── */
@@ -134,4 +144,178 @@ button:hover {
 #controls {
   display: flex;
   gap: 12px;
+}
+
+/* ── Right Column — Sidebar ── */
+#app-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 260px;
+  height: 640px;
+  overflow-y: auto;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 16px;
+  flex-shrink: 0;
+}
+
+#sidebar-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* ── FSL Grid ── */
+#fsl-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.fsl-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  border-radius: 8px;
+  background-color: #242424;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.fsl-item img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.fsl-item span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #aaa;
+}
+
+/* ── Active letter highlight ── */
+.fsl-item.active {
+  background-color: #1e3a8a;
+  box-shadow: 0 0 0 2px #2563eb;
+}
+
+.fsl-item.active span {
+  color: #f0f0f0;
+}
+
+/* ── Landing Content ── */
+#landing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 640px;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+#landing-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+#landing-tagline {
+  font-size: 1rem;
+  color: #888;
+  line-height: 1.6;
+}
+
+/* ── How It Works ── */
+#how-it-works h2,
+#supported-letters h2 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+#steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  padding: 14px 18px;
+  text-align: left;
+}
+
+.step-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.step-text {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.5;
+}
+
+/* ── Supported Letters ── */
+#letters-note {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+#letters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.letter-badge {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+.letter-badge.unsupported {
+  color: #444;
+  background-color: #111;
+  text-decoration: line-through;
+}
+
+/* ── Attribution ── */
+#attribution {
+  font-size: 0.75rem;
+  color: #444;
+}
+
+#attribution a {
+  color: #555;
+  text-decoration: underline;
+}
+
+#attribution a:hover {
+  color: #888;
 }
